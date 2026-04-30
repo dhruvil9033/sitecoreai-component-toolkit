@@ -1,208 +1,242 @@
 # 🚀 SitecoreAI Component Toolkit
 
-Enterprise-grade Helix refactor utility for **SitecoreAI / XM Cloud (SXA Headless)**.
+**Dependency-aware Component Refactor & Cleanup Engine for Sitecore XM Cloud (SXA Headless)**
 
 ---
 
-## 📦 Overview
+## 🔥 Why This Exists
 
-**SitecoreAI Component Toolkit** is a PowerShell-based refactor engine that allows developers to safely move a component (Json Rendering) between Helix modules while automatically handling all related artifacts.
+In Sitecore XM Cloud (SitecoreAI), a component is **not just a rendering**.
 
-When components are cloned or incorrectly structured, Helix boundaries can break. This tool realigns components across:
+It is a distributed structure across:
 
-- `/sitecore/layout/Renderings`
-- `/sitecore/templates`
-- `/sitecore/templates/Branches`
-- `/sitecore/system/Settings`
-- `/sitecore/layout/Placeholder Settings`
+* `/layout/Renderings`
+* `/templates`
+* `/templates/Branches`
+* `/system/Settings`
+* SXA Headless configurations
+* Available Renderings
+* Layout references
 
-All in a single guided operation.
+👉 Moving or deleting only the rendering **breaks the system silently**.
 
----
+This leads to:
 
-## 🎯 Problem It Solves
-
-In SitecoreAI (XM Cloud + SXA Headless), cloning a component creates multiple dependent items across the Sitecore tree.
-
-Manually moving these items is:
-
-- ❌ Error-prone  
-- ❌ Time-consuming  
-- ❌ Risky for SXA setup  
-- ❌ Likely to break Available Renderings references  
-
-**Component Toolkit automates this safely.**
+* ❌ Broken Experience Editor
+* ❌ Orphaned templates & branches
+* ❌ Corrupted SXA configurations
+* ❌ Invalid Available Renderings
 
 ---
 
-## ✨ Features
+## 🧠 What This Toolkit Does
 
-### ✅ Helix-Aware Module Refactor
+This toolkit introduces a **dependency-aware engine** that safely manages component lifecycle:
 
-Moves component between:
+### 🧩 Move / Refactor Component
 
-- Feature
-- Foundation
-- Project
+* Moves component across Helix modules
+* Automatically relocates all related artifacts
+* Updates all references safely
 
-Layer is automatically detected from context.
+### 🧹 Safe Delete (Cleanup Engine)
 
----
+* Deletes component **with full dependency cleanup**
+* Removes:
 
-### ✅ Moves Related Artifacts
-
-The toolkit can move:
-
-- ✔ Datasource Template  
-- ✔ Folder Template (`<Template> Folder`)  
-- ✔ Rendering Parameters Template  
-- ✔ Branch Template  
-- ✔ Default `<Rendering Name>` Variant Branch  
-- ✔ Placeholder Settings  
-- ✔ SXA Headless "Add Data Item"  
-- ✔ SXA Rendering Variant  
-- ✔ Json Rendering (final step)
+  * Templates
+  * Branch templates
+  * SXA Headless settings
+  * Rendering variants
+  * Available Renderings
+* Prevents orphaned structures and broken references
 
 ---
 
-### ✅ Updates References Automatically
+## 📦 Full Toolkit Package Available
 
-After move, the tool:
+A **combined package** is included in the repository:
 
-- 🔄 Updates `Datasource Template` field binding  
-- 🔄 Updates Branch `$name` → Available Headless Renderings  
-- 🔄 Updates Content-level Available Renderings  
-- 🔄 Removes reference from old module  
-- 🔄 Adds reference to new module  
+✔ `SitecoreAI.ComponentToolkit.v1.0.0.zip`
 
-No manual fixes required.
+Includes:
 
----
+* Move Component module
+* Safe Delete Component module
 
-## 🏗 Supported Architecture
-
-Designed for:
-
-- Sitecore 10.2+
-- SitecoreAI (XM Cloud)
-- SXA Headless
-- Helix-based solutions
-- Sitecore PowerShell Extensions 6.4+
+👉 Recommended for quick and complete setup
 
 ---
 
-## 📂 Example
+## ⚙️ Core Capabilities
 
-If your rendering is:/sitecore/layout/Renderings/Feature/Test A/Promo A
-
-And you move it to:/sitecore/layout/Renderings/Feature/Test B
-
-
-The tool evaluates and moves all related artifacts automatically, including templates, branches, settings, and rendering references.
-
----
-
-## 🛠 Installation
-
-### 1️⃣ Install Sitecore PowerShell Extensions
-
-Required version: **6.4+**
+✔ Helix-aware module detection
+✔ Dependency graph-based processing
+✔ SXA Headless compatibility
+✔ Automatic reference updates
+✔ Safe execution order
+✔ Prevents duplicate or broken references
 
 ---
 
-### 2️⃣ Install Module Package
+## 🏗️ What Gets Handled Automatically
 
-1. Navigate to: 
-The tool evaluates and moves all related artifacts automatically, including templates, branches, settings, and rendering references.
-
----
-
-## 🛠 Installation
-
-### 1️⃣ Install Sitecore PowerShell Extensions
-
-Required version: **6.4+**
-
----
-
-### 2️⃣ Install Module Package
-
-1. Navigate to:/sitecore/admin/PackageInstaller.aspx
-2. Upload:
-3. Install the package.
+* Datasource Templates
+* Folder Templates
+* Rendering Parameters
+* Branch Templates
+* Default Variant Branch
+* SXA “Add Data Item” settings
+* Rendering Variants
+* Available Renderings (global + content)
+* Json Rendering (final step)
 
 ---
 
-### 3️⃣ Usage
+## 🔄 Safe Execution Order
+
+To prevent broken bindings and inconsistent states:
+
+1. Folder Template
+2. Datasource Template
+3. Rendering Parameters
+4. Branch Templates
+5. SXA Settings
+6. Rendering Variants
+7. Json Rendering
+8. Reference updates
+
+---
+
+## 🧪 Real Scenario
+
+You created or cloned a component into the wrong Helix module.
+
+👉 Moving only the rendering → broken system
+👉 Manual cleanup → time-consuming and error-prone
+👉 Toolkit → full dependency-safe refactor in correct order
+
+---
+
+## 🖥️ Installation
+
+### 1. Install Sitecore PowerShell Extensions
+
+* Version: **6.4+**
+
+---
+
+### 2. Install Package
+
+Navigate to:
+`/sitecore/admin/PackageInstaller.aspx`
+
+You have **two options**:
+
+---
+
+### ✅ Option 1 — Full Toolkit (Recommended)
+
+Install:
+
+`SitecoreAI.ComponentToolkit.v1.0.0.zip`
+
+✔ Includes:
+
+* Move Component
+* Safe Delete Engine
+
+👉 Best for quick setup
+
+---
+
+### ⚙️ Option 2 — Individual Modules
+
+Install separately:
+
+* `SitecoreAI.ComponentToolkit.MoveComponent.*.zip`
+* `SitecoreAI.ComponentToolkit.DeleteComponent.*.zip`
+
+👉 Use for modular control
+
+---
+
+## ▶️ Usage
 
 1. Open **Content Editor**
 2. Navigate to a **Json Rendering**
-3. Right-click
-4. Select:Scripts -> Component Toolkit -> Move/ Refactor Component
-5. Choose target module
-6. Select artifacts to move
-7. Confirm
+3. Right-click →
+   **Scripts → Component Toolkit**
+4. Choose action:
 
-Done.
-
----
-
-## 🔁 Safe Execution Order
-
-To prevent broken bindings, execution order is:
-
-1. Folder Template  
-2. Datasource Template  
-3. Rendering Parameters  
-4. Branch Templates  
-5. SXA Headless Settings  
-6. Rendering Variant  
-7. Json Rendering (last)  
-8. Reference updates  
-
-This ensures structural stability.
+   * Move / Refactor Component
+   * Safe Delete Component
+5. Select target or confirm deletion
 
 ---
 
-## 🧠 Smart Detection Logic
+## 🛡️ Safety Features
 
-The tool:
-
-- Detects current layer automatically
-- Detects current module path
-- Scans within layer scope
-- Filters by module path to avoid cross-module conflicts
-- Shows only relevant move options
+* Prevents duplicate Available Renderings
+* Prevents orphaned branch references
+* Skips already aligned items
+* Supports forward and reverse refactors
+* Ensures consistent SXA configuration
 
 ---
 
-## 🔒 Safety Features
+## 🧱 Supported Architecture
 
-- Does not move items already aligned
-- Prevents duplicate Available Rendering entries
-- Prevents orphaned branch references
-- Supports forward and backward refactors
+* Sitecore 10.2+
+* XM Cloud (SitecoreAI)
+* SXA Headless
+* Helix Architecture
+* SPE 6.4+
+
+---
+
+## 📦 Modules Overview
+
+| Module         | Purpose                                         |
+| -------------- | ----------------------------------------------- |
+| Move Component | Safe Helix refactor with dependency handling    |
+| Safe Delete    | Complete cleanup engine with dependency removal |
+
+---
+
+## ⭐ Why It Matters
+
+In large XM Cloud solutions:
+
+* Components evolve frequently
+* Teams refactor across modules
+* Dependencies become fragmented
+
+This toolkit ensures:
+
+✔ Structural integrity
+✔ Helix compliance
+✔ Clean SXA configuration
+✔ Reduced technical debt
+✔ Safe refactoring workflows
+
+---
+
+## 📣 Contribute
+
+* ⭐ Star the repository
+* 🛠 Submit pull requests
+* 🧠 Suggest improvements
 
 ---
 
 ## 👤 Author
 
-**Dhruvil Gajera**  
-SitecoreAI Developer  
-
----
-
-## ⭐ Support
-
-If this toolkit helped you:
-
-- Star the repository
-- Share it with the community
-- Submit improvements via PR
+Dhruvil Gajera
+Sitecore XM Cloud Developer
 
 ---
 
 ## ⚠ Disclaimer
 
-Test in lower environments before production use.  
-Designed for Helix-based SitecoreAI solutions using SXA Headless architecture.
+Always test in lower environments before using in production.
